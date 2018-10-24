@@ -1,5 +1,6 @@
 export const root = {
-  name: 'app'
+  name: 'app',
+  redirectTo: 'app.posts'
 };
 
 export const posts = {
