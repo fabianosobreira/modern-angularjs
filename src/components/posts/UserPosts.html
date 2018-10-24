@@ -1,0 +1,10 @@
+<h3 class="subtitle">Posts</h3>
+
+<div class="content">
+  <article ng-repeat="post in $ctrl.posts track by post.id">
+    <h1 class="title is-size-4 is-uppercase">{{ post.title }}</h1>
+    <p class="is-size-5">{{ post.body }}</p>
+    <c-comments post-id="post.id"></c-comments>
+    <hr>
+  </article>
+</div>

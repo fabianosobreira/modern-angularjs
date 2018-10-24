@@ -1,0 +1,9 @@
+<h3 class="subtitle">Users</h3>
+
+<ul>
+  <li ng-repeat="user in $ctrl.users track by user.id">
+    <a ui-sref="app.posts.userPosts({ userId: user.id})">
+      {{ user.name }}
+    </a>
+  </li>
+</ul>

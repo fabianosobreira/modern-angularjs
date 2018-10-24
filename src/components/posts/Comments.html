@@ -1,0 +1,12 @@
+<h2 class="title is-size-5">Comments:</h2>
+
+<div ng-repeat="comment in $ctrl.comments track by comment.id">
+  <p class="is-size-7">
+    <div class="has-text-info has-text-weight-semibold">
+      <abbr title="{{ comment.email }}">{{ comment.name }}:</abbr>
+    </div>
+    <div>
+      <em>{{ comment.body }}</em>
+    </div>
+  </p>
+</div>
