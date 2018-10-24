@@ -8,6 +8,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = env => {
+
   return {
     mode: env.prod ? 'production' : 'development',
 
@@ -76,7 +77,6 @@ module.exports = env => {
       ]
       : [
         new CleanWebpackPlugin(['dist']),
-        new webpack.NamedModulesPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
           template: './src/index.html',
@@ -87,6 +87,8 @@ module.exports = env => {
           }
         })
       ],
+
+    devtool: env.prod ? 'nosources-source-map' : 'eval-source-map',
 
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
