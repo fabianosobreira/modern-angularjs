@@ -6,8 +6,8 @@
   "author": "Fabiano Sobreira",
   "license": "ISC",
   "scripts": {
-    "build": "npm run clean && webpack --env.prod --color --progress",
-    "serve": "webpack-dev-server --env.dev  --color --progress"
+    "build": "webpack --env.prod --color --progress",
+    "serve": "webpack-dev-server --env.dev --color --progress"
   },
   "devDependencies": {
     "autoprefixer": "^9.3.0",
