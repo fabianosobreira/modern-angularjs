@@ -5,20 +5,24 @@ import uirouter from '@uirouter/angularjs';
 
 import { config, bootstrap } from './app.config';
 
-import { Header } from './components/Header';
-import { Content } from './components/Content';
-import { Posts } from './components/posts/Posts';
-import { UserList } from './components/posts/UserList';
-import { UserPosts } from './components/posts/UserPosts';
-import { Comments } from './components/posts/Comments';
+import AuthService from './AuthService';
+import Header from './components/Header';
+
+import LoginPage from './components/login/LoginPage';
+
+import PostsPage from './components/posts/PostsPage';
+import UserList from './components/posts/UserList';
+import UserPosts from './components/posts/UserPosts';
+import Comments from './components/posts/Comments';
 
 angular
   .module('app', [uirouter])
   .config(config)
   .run(bootstrap)
+  .service('AuthService', AuthService)
   .component('cHeader', Header)
-  .component('cContent', Content)
-  .component('cPosts', Posts)
+  .component('loginPage', LoginPage)
+  .component('postsPage', PostsPage)
   .component('cUserList', UserList)
   .component('cUserPosts', UserPosts)
   .component('cComments', Comments);

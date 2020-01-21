@@ -1,4 +1,4 @@
-class CommentsCtrl {
+class Comments {
   constructor($http) {
     'ngInject';
     this.$http = $http;
@@ -16,9 +16,9 @@ class CommentsCtrl {
   }
 }
 
-export const Comments = {
+export default {
   template: require('./Comments.html'),
-  controller: CommentsCtrl,
+  controller: Comments,
   bindings: {
     $transition$: '<',
     postId: '<'

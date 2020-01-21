@@ -1,16 +1,25 @@
-export const root = {
-  name: 'app',
-  redirectTo: 'app.posts'
+const root = {
+  name: 'index',
+  redirectTo: 'posts'
 };
 
-export const posts = {
-  name: 'app.posts',
+const login = {
+  name: 'login',
+  url: '/login',
+  component: 'loginPage'
+};
+
+const posts = {
+  name: 'posts',
   url: '/posts',
-  component: 'cPosts'
+  component: 'postsPage',
+  data: {
+    requiresAuth: true
+  }
 };
 
-export const posts_details = {
-  name: 'app.posts.userPosts',
+const posts_details = {
+  name: 'posts.userPosts',
   url: '/:userId',
   component: 'cUserPosts',
   params: {
@@ -20,3 +29,5 @@ export const posts_details = {
     }
   }
 };
+
+export default [root, login, posts, posts_details];

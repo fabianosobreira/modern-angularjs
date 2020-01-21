@@ -1,4 +1,4 @@
-class UserPostsCtrl {
+class UserPosts {
   constructor($http, $transitions) {
     'ngInject';
     this.$http = $http;
@@ -9,7 +9,7 @@ class UserPostsCtrl {
   $onInit() {
     this.deregisterHook = this.$transitions.onRetain(
       {
-        retained: 'app.posts.userPosts'
+        retained: 'posts.userPosts'
       },
       tr => this.activate(tr)
     );
@@ -37,9 +37,9 @@ class UserPostsCtrl {
   }
 }
 
-export const UserPosts = {
+export default {
   template: require('./UserPosts.html'),
-  controller: UserPostsCtrl,
+  controller: UserPosts,
   bindings: {
     $transition$: '<'
   }

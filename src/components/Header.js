@@ -1,3 +1,3 @@
-export const Header = {
+export default {
   template: require('./Header.html')
 };
