@@ -3,12 +3,11 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = env => {
-
   return {
     mode: env.prod ? 'production' : 'development',
 
@@ -40,7 +39,7 @@ module.exports = env => {
             env.prod ? MiniCssExtractPlugin.loader : 'style-loader',
             {
               loader: 'css-loader',
-              options: { importLoaders: 1, minimize: env.prod }
+              options: { importLoaders: 1 }
             },
             'sass-loader'
           ]
@@ -64,29 +63,29 @@ module.exports = env => {
 
     plugins: env.prod
       ? [
-        new CleanWebpackPlugin(['dist']),
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin({
-          template: path.join(__dirname, 'src/index.html'),
-          hash: true,
-          minify: {
-            html5: true,
-            minifyJS: true
-          }
-        })
-      ]
+          new CleanWebpackPlugin(['dist']),
+          new MiniCssExtractPlugin(),
+          new HtmlWebpackPlugin({
+            template: path.join(__dirname, 'src/index.html'),
+            hash: true,
+            minify: {
+              html5: true,
+              minifyJS: true
+            }
+          })
+        ]
       : [
-        new CleanWebpackPlugin(['dist']),
-        new webpack.HotModuleReplacementPlugin(),
-        new HtmlWebpackPlugin({
-          template: './src/index.html',
-          hash: true,
-          minify: {
-            html5: true,
-            minifyJS: true
-          }
-        })
-      ],
+          new CleanWebpackPlugin(),
+          new webpack.HotModuleReplacementPlugin(),
+          new HtmlWebpackPlugin({
+            template: './src/index.html',
+            hash: true,
+            minify: {
+              html5: true,
+              minifyJS: true
+            }
+          })
+        ],
 
     devtool: env.prod ? 'nosources-source-map' : 'eval-source-map',
 

@@ -1,4 +1,4 @@
-class UserListCtrl {
+class UserList {
   constructor($http) {
     'ngInject';
     this.$http = $http;
@@ -16,9 +16,9 @@ class UserListCtrl {
   }
 }
 
-export const UserList = {
+export default {
   template: require('./UserList.html'),
-  controller: UserListCtrl,
+  controller: UserList,
   bindings: {
     $transition$: '<'
   }
