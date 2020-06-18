@@ -37,7 +37,7 @@
   "dependencies": {
     "@uirouter/angularjs": "^1.0.24",
     "@uirouter/visualizer": "^7.0.0",
-    "angular": "^1.7.9",
+    "angular": "^1.8.0",
     "bulma": "^0.8.0"
   }
 }
