@@ -1,6 +1,5 @@
 export default class AuthService {
   constructor($q, $timeout) {
-    'nginject';
     this.$q = $q;
     this.$timeout = $timeout;
   }
@@ -26,3 +25,5 @@ export default class AuthService {
     return !!localStorage['user'];
   }
 }
+
+AuthService.$inject = ['$q', '$timeout'];

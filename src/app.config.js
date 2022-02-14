@@ -3,28 +3,29 @@ import { Visualizer } from '@uirouter/visualizer';
 import states from './app.states';
 
 export function config($logProvider, $stateProvider, $urlServiceProvider) {
-  'ngInject';
-
   $logProvider.debugEnabled(true);
 
-  states.forEach(state => $stateProvider.state(state));
+  states.forEach((state) => $stateProvider.state(state));
 
   $urlServiceProvider.rules.otherwise({ state: 'index' });
 }
 
+config.$inject = ['$logProvider', '$stateProvider', '$urlServiceProvider'];
+
 export function bootstrap($uiRouter, $transitions) {
-  'ngInject';
-  $uiRouter.plugin(Visualizer);
+  import.meta.env.DEV && $uiRouter.plugin(Visualizer);
   $transitions.onBefore(requiresAuthCriteria, redirectToLogin, {
-    priority: 10
+    priority: 10,
   });
 }
 
+bootstrap.$inject = ['$uiRouter', '$transitions'];
+
 const requiresAuthCriteria = {
-  to: state => state.data && state.data.requiresAuth
+  to: (state) => state.data && state.data.requiresAuth,
 };
 
-const redirectToLogin = transition => {
+const redirectToLogin = (transition) => {
   let AuthService = transition.injector().get('AuthService');
   let $state = transition.router.stateService;
   if (!AuthService.isAuthenticated()) {

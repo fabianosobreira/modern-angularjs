@@ -1,12 +1,12 @@
 const root = {
   name: 'index',
-  redirectTo: 'posts'
+  redirectTo: 'posts',
 };
 
 const login = {
   name: 'login',
   url: '/login',
-  component: 'loginPage'
+  component: 'loginPage',
 };
 
 const posts = {
@@ -14,8 +14,8 @@ const posts = {
   url: '/posts',
   component: 'postsPage',
   data: {
-    requiresAuth: true
-  }
+    requiresAuth: true,
+  },
 };
 
 const posts_details = {
@@ -25,9 +25,9 @@ const posts_details = {
   params: {
     userId: {
       dynamic: true,
-      type: 'int'
-    }
-  }
+      type: 'int',
+    },
+  },
 };
 
 export default [root, login, posts, posts_details];

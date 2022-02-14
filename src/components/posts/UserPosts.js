@@ -1,6 +1,7 @@
+import template from './UserPosts.html?raw';
+
 class UserPosts {
   constructor($http, $transitions) {
-    'ngInject';
     this.$http = $http;
     this.$transitions = $transitions;
     this.posts = [];
@@ -9,9 +10,9 @@ class UserPosts {
   $onInit() {
     this.deregisterHook = this.$transitions.onRetain(
       {
-        retained: 'posts.userPosts'
+        retained: 'posts.userPosts',
       },
-      tr => this.activate(tr)
+      (tr) => this.activate(tr)
     );
 
     this.activate(this.$transition$);
@@ -30,17 +31,19 @@ class UserPosts {
     return this.$http
       .get('https://jsonplaceholder.typicode.com/posts', {
         params: {
-          userId: this.params.userId
-        }
+          userId: this.params.userId,
+        },
       })
-      .then(res => (this.posts = res.data));
+      .then((res) => (this.posts = res.data));
   }
 }
 
+UserPosts.$inject = ['$http', '$transitions'];
+
 export default {
-  template: require('./UserPosts.html'),
+  template,
   controller: UserPosts,
   bindings: {
-    $transition$: '<'
-  }
+    $transition$: '<',
+  },
 };

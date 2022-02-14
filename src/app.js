@@ -1,4 +1,4 @@
-require('./assets/main.scss');
+import './assets/main.scss';
 
 import angular from 'angular';
 import uirouter from '@uirouter/angularjs';

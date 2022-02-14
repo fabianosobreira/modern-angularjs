@@ -1,6 +1,7 @@
+import template from './UserList.html?raw';
+
 class UserList {
   constructor($http) {
-    'ngInject';
     this.$http = $http;
     this.users = [];
   }
@@ -12,14 +13,16 @@ class UserList {
   getPosts() {
     return this.$http
       .get('https://jsonplaceholder.typicode.com/users')
-      .then(res => (this.users = res.data));
+      .then((res) => (this.users = res.data));
   }
 }
 
+UserList.$inject = ['$http'];
+
 export default {
-  template: require('./UserList.html'),
+  template,
   controller: UserList,
   bindings: {
-    $transition$: '<'
-  }
+    $transition$: '<',
+  },
 };

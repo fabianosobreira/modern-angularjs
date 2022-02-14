@@ -1,9 +1,11 @@
+import template from './LoginPage.html?raw';
+
 class Login {
   constructor($state, AuthService) {
-    'ngInject';
     this.$state = $state;
     this.authService = AuthService;
     this.username = '';
+    this.authService.logout();
   }
 
   submit() {
@@ -11,17 +13,19 @@ class Login {
     if (username) {
       authService
         .login(username)
-        .then(res => $state.go('posts'))
-        .catch(err => alert("Invalid login! Try 'user' instead."));
+        .then((res) => $state.go('posts'))
+        .catch((err) => alert("Invalid login! Try 'user' instead."));
     }
   }
 }
 
+Login.$inject = ['$state', 'AuthService'];
+
 export default {
-  template: require('./LoginPage.html'),
+  template,
   controller: Login,
   bindings: {
     $transition$: '<',
-    returnTo: '<'
-  }
+    returnTo: '<',
+  },
 };

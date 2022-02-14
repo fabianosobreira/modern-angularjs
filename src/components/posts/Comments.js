@@ -1,6 +1,7 @@
+import template from './Comments.html?raw';
+
 class Comments {
   constructor($http) {
-    'ngInject';
     this.$http = $http;
     this.comments = [];
   }
@@ -12,15 +13,17 @@ class Comments {
   getComments() {
     return this.$http
       .get(`https://jsonplaceholder.typicode.com/posts/${this.postId}/comments`)
-      .then(res => (this.comments = res.data));
+      .then((res) => (this.comments = res.data));
   }
 }
 
+Comments.$inject = ['$http'];
+
 export default {
-  template: require('./Comments.html'),
+  template,
   controller: Comments,
   bindings: {
     $transition$: '<',
-    postId: '<'
-  }
+    postId: '<',
+  },
 };

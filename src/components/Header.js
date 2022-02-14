@@ -1,3 +1,5 @@
+import template from './Header.html?raw';
+
 export default {
-  template: require('./Header.html')
+  template,
 };
